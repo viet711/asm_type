@@ -64,7 +64,6 @@ export const addSchema = Yup.object({
     images: Yup.array().of(
         Yup.object().shape({
             base_url: Yup.string(),
-          
         })
     ),
     description: Yup.string().min(10, "Tối thiếu 10 ký tự").required("Trường dữ liệu bắt buộc"),

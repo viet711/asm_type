@@ -1,25 +1,23 @@
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup';
+import yupResolver from "@hookform/resolvers/yup"
 import * as Yup from 'yup'
 import { SignupForm, signupSchema } from '../models';   
-import { signup } from '../api/auth';
+// import { signup } from '../api/auth';
 
 const Signup = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<SignupForm>({
-    resolver: yupResolver(signupSchema)
-})
+//   const { register, handleSubmit, formState: { errors } } = useForm<SignupForm>({
+// })
 
-const onSubmit = async (data: SignupForm) => {
-    try {
-        const response = await signup(data)
-        console.log(response);
+// const onSubmit = async (data: SignupForm) => {
+//     try {
+//         console.log("Form data:", data);
 
-    }catch(err) {
-        console.log(err);
-
-    }
-
-}
+//         const response = await signup(data);
+//         console.log("API response:", response);
+//     } catch (err) {
+//         console.error("Error:", err);
+//     }
+// };
   
   return  <section className="bg-white">
   <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
@@ -54,7 +52,7 @@ const onSubmit = async (data: SignupForm) => {
                   dolorum aliquam, quibusdam aperiam voluptatum.
               </p>
 
-              <form action="#" className="mt-8 grid grid-cols-6 gap-6" onSubmit={handleSubmit(onSubmit)}>
+              <form action="#" className="mt-8 grid grid-cols-6 gap-6" >
                   <div className="col-span-6 sm:col-span-3">
                       <label
                           htmlFor="FirstName"
@@ -64,11 +62,9 @@ const onSubmit = async (data: SignupForm) => {
                       </label>
 
                       <input
-                          {...register('firstName')}
                           className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                       />
                       <p className='text-red-600 text-[10px]'>
-                          {errors.firstName && errors.firstName.message}
                       </p>
                   </div>
 
@@ -81,12 +77,11 @@ const onSubmit = async (data: SignupForm) => {
                       </label>
 
                       <input
-                          {...register('lastName')}
+                         
                           className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                       />
                       <p className='text-red-600 text-[10px]'>
 
-                          {errors.lastName && errors.lastName.message}
                       </p>
                   </div>
 
@@ -96,12 +91,10 @@ const onSubmit = async (data: SignupForm) => {
                       </label>
 
                       <input
-                          {...register('email')}
                           className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                       />
                       <p className='text-red-600 text-[10px]'>
 
-                          {errors.email && errors.email.message}
                       </p>
                   </div>
 
@@ -115,12 +108,10 @@ const onSubmit = async (data: SignupForm) => {
 
                       <input
                           type="password"
-                          {...register('password')}
                           className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                       />
                       <p className='text-red-600 text-[10px]'>
 
-                          {errors.password && errors.password.message}
                       </p>
                   </div>
 
@@ -134,12 +125,10 @@ const onSubmit = async (data: SignupForm) => {
 
                       <input
                           type="password"
-                          {...register('confirmPassword')}
                           className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                       />
                       <p className='text-red-600 text-[10px]'>
 
-                          {errors.confirmPassword && errors.confirmPassword.message}
                       </p>
                   </div>
                   <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
